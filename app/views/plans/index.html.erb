@@ -1,0 +1,13 @@
+<div class= "container" >
+  <h3>Upgrade Plan for <%= current_user.username %></h3>
+  <p>Your Current Plan is: <strong><%= current_user.plan.name %></strong></p>
+
+  <%= form_tag upgrade_plan_path(current_user), method: :post do %>
+    <label>Select a new plan:</label>
+    <%= select_tag 'plan_id', options_from_collection_for_select(@plans, 'id', 'name') %>
+    <%= submit_tag 'Upgrade' %>
+  <% end %>
+
+  <%= link_to 'Back', plans_path %>
+
+</div>

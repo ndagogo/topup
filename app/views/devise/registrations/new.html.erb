@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+    <div class="col-9">
+        <h1><%= t('.sign_up') %></h1>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= bootstrap_devise_error_messages! %>
+
+          <div class="form-group">
+            <%= f.label :referrer_code %>
+            <%= f.text_field :referrer_code, autofocus: true, autocomplete: 'referrer_code',  class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :username %>
+            <%= f.text_field :username, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password,class: 'form-control' %>
+
+            <% if @minimum_password_length %>
+              <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number, autofocus: true, autocomplete: 'phone_number', class: 'form-control' %>
+          </div>
+          
+
+          <div class="form-group">
+            <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+        <%= render 'devise/shared/links' %>
+      </div>
+    </div>
+</div>

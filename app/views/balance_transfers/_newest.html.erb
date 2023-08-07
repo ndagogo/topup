@@ -1,0 +1,30 @@
+<h1>Transfer Balance</h1> 
+<p><h3>Available Balance is: <strong><%= current_user.balance %> NGN</strong></h3></p>
+<%= form_with(model: @balance_transfer, url: balance_transfers_path, local: true) do |form| %>
+  <% if @balance_transfer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@balance_transfer.errors.count, "error") %> prohibited this balance transfer from being saved:</h2>
+      <ul>
+        <% @balance_transfer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :receiver_username %>
+    <%= form.text_field :receiver_username %>
+    <br />
+  </div>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
